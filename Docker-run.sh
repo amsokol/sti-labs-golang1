@@ -1,0 +1,1 @@
+docker run -it --name=sti-labs-golang1 amsokol/sti-labs-golang1-app:latest

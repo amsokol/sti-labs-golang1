@@ -1,5 +1,5 @@
 
-IMAGE_NAME = sti-labs-golang1
+IMAGE_NAME = amsokol/sti-labs-golang1-builder
 
 build:
 	docker build -t $(IMAGE_NAME) .

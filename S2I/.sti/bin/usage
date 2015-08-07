@@ -1,4 +1,3 @@
-
 #!/bin/bash -e
 cat <<EOF
 This is the sti-labs-golang1 S2I image:

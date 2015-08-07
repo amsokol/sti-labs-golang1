@@ -1,4 +1,3 @@
-
 #!/bin/sh -e
 #
 # S2I save-artifacts script for the 'sti-labs-golang1' image.
