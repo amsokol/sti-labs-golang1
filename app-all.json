@@ -1,0 +1,218 @@
+{
+    "kind": "List",
+    "apiVersion": "v1",
+    "items": [
+      {
+          "kind": "ImageStream",
+          "apiVersion": "v1",
+          "metadata": {
+              "name": "base-centos7",
+              "namespace": "labs",
+              "selfLink": "/osapi/v1beta3/namespaces/labs/imagestreams/base-centos7",
+              "uid": "74ae9f2f-3d9f-11e5-b9e0-0800275d509e",
+              "resourceVersion": "3808",
+              "creationTimestamp": "2015-08-08T07:31:17Z",
+              "labels": {
+                  "app": "sti-labs-golang1"
+              },
+              "annotations": {
+                  "openshift.io/image.dockerRepositoryCheck": "2015-08-08T07:31:19Z"
+              }
+          },
+          "spec": {
+              "dockerImageRepository": "openshift/base-centos7"
+          },
+          "status": {
+              "dockerImageRepository": "openshift/base-centos7",
+              "tags": [
+                  {
+                      "tag": "latest",
+                      "items": [
+                          {
+                              "created": "2015-08-08T07:31:19Z",
+                              "dockerImageReference": "openshift/base-centos7:latest",
+                              "image": "9748d87798658e847835b60d447a2beeccddb1c8887748bbbed994a8a947814c"
+                          }
+                      ]
+                  }
+              ]
+          }
+      },
+      {
+          "kind": "ImageStream",
+          "apiVersion": "v1",
+          "metadata": {
+              "name": "sti-labs-golang1-builder",
+              "namespace": "labs",
+              "selfLink": "/osapi/v1beta3/namespaces/labs/imagestreams/sti-labs-golang1-builder",
+              "uid": "74b045fe-3d9f-11e5-b9e0-0800275d509e",
+              "resourceVersion": "3917",
+              "creationTimestamp": "2015-08-08T07:31:17Z",
+              "labels": {
+                  "app": "sti-labs-golang1"
+              }
+          },
+          "spec": {},
+          "status": {
+              "dockerImageRepository": "172.30.18.224:5000/labs/sti-labs-golang1-builder",
+              "tags": [
+                  {
+                      "tag": "latest",
+                      "items": [
+                          {
+                              "created": "2015-08-08T07:36:08Z",
+                              "dockerImageReference": "172.30.18.224:5000/labs/sti-labs-golang1-builder@sha256:8e1d45e500bda81b8d07737cb7c5d0d7489e337e563ee7fde938472d44efcb48",
+                              "image": "sha256:8e1d45e500bda81b8d07737cb7c5d0d7489e337e563ee7fde938472d44efcb48"
+                          }
+                      ]
+                  }
+              ]
+          }
+      },
+      {
+          "kind": "ImageStream",
+          "apiVersion": "v1",
+          "metadata": {
+              "name": "sti-labs-golang1",
+              "namespace": "labs",
+              "selfLink": "/osapi/v1beta3/namespaces/labs/imagestreams/sti-labs-golang1",
+              "uid": "cc68fb9b-3da4-11e5-b9e0-0800275d509e",
+              "resourceVersion": "4623",
+              "creationTimestamp": "2015-08-08T08:09:31Z",
+              "labels": {
+                  "app": "sti-labs-golang1"
+              }
+          },
+          "spec": {},
+          "status": {
+              "dockerImageRepository": "172.30.18.224:5000/labs/sti-labs-golang1",
+              "tags": [
+                  {
+                      "tag": "latest",
+                      "items": [
+                          {
+                              "created": "2015-08-08T08:12:45Z",
+                              "dockerImageReference": "172.30.18.224:5000/labs/sti-labs-golang1@sha256:ad95960fbef7bfbcfafb0cfe3f2743e817dbbc2de6800b0211a1e5425f481b52",
+                              "image": "sha256:ad95960fbef7bfbcfafb0cfe3f2743e817dbbc2de6800b0211a1e5425f481b52"
+                          }
+                      ]
+                  }
+              ]
+          }
+      },
+      {
+          "kind": "BuildConfig",
+          "apiVersion": "v1",
+          "metadata": {
+              "name": "sti-labs-golang1-builder",
+              "namespace": "labs",
+              "selfLink": "/osapi/v1beta3/namespaces/labs/buildconfigs/sti-labs-golang1-builder",
+              "uid": "74b52905-3d9f-11e5-b9e0-0800275d509e",
+              "resourceVersion": "3814",
+              "creationTimestamp": "2015-08-08T07:31:17Z",
+              "labels": {
+                  "app": "sti-labs-golang1"
+              }
+          },
+          "spec": {
+              "triggers": null,
+              "source": {
+                  "type": "Git",
+                  "git": {
+                      "uri": "https://github.com/amsokol/sti-labs-golang1.git"
+                  },
+                  "contextDir": "S2I"
+              },
+              "strategy": {
+                  "type": "Docker",
+                  "dockerStrategy": {
+                      "from": {
+                          "kind": "ImageStreamTag",
+                          "name": "base-centos7:latest"
+                      }
+                  }
+              },
+              "output": {
+                  "to": {
+                      "kind": "ImageStreamTag",
+                      "name": "sti-labs-golang1-builder:latest"
+                  }
+              },
+              "resources": {}
+          },
+          "status": {
+              "lastVersion": 1
+          }
+      },
+      {
+          "kind": "BuildConfig",
+          "apiVersion": "v1",
+          "metadata": {
+              "name": "sti-labs-golang1",
+              "namespace": "labs",
+              "selfLink": "/osapi/v1beta3/namespaces/labs/buildconfigs/sti-labs-golang1",
+              "uid": "cc6ad7a2-3da4-11e5-b9e0-0800275d509e",
+              "resourceVersion": "4549",
+              "creationTimestamp": "2015-08-08T08:09:31Z",
+              "labels": {
+                  "app": "sti-labs-golang1"
+              }
+          },
+          "spec": {
+              "triggers": null,
+              "source": {
+                  "type": "Git",
+                  "git": {
+                      "uri": "https://github.com/amsokol/sti-labs-golang1.git"
+                  }
+              },
+              "strategy": {
+                  "type": "Source",
+                  "sourceStrategy": {
+                      "from": {
+                          "kind": "ImageStreamTag",
+                          "namespace": "labs",
+                          "name": "sti-labs-golang1-builder:latest"
+                      }
+                  }
+              },
+              "output": {
+                  "to": {
+                      "kind": "ImageStreamTag",
+                      "name": "sti-labs-golang1:latest"
+                  }
+              },
+              "resources": {}
+          },
+          "status": {
+              "lastVersion": 1
+          }
+      },
+      {
+          "kind": "Route",
+          "apiVersion": "v1",
+          "metadata": {
+              "name": "sti-labs-golang1",
+              "namespace": "labs",
+              "selfLink": "/osapi/v1beta3/namespaces/labs/routes/sti-labs-golang1",
+              "uid": "1808386b-3e50-11e5-8d7c-0800275d509e",
+              "resourceVersion": "6330",
+              "creationTimestamp": "2015-08-09T04:35:42Z",
+              "labels": {
+                  "app": "sti-labs-golang1"
+              },
+              "annotations": {
+                  "openshift.io/host.generated": "false"
+              }
+          },
+          "spec": {
+              "host": "sti-labs-golang1.openshift.beeline",
+              "to": {
+                  "kind": "Service",
+                  "name": "sti-labs-golang1"
+              }
+          },
+          "status": {}
+      }      
+    ]
+}
