@@ -9,7 +9,7 @@
               "name": "labs",
               "annotations": {
                   "openshift.io/description": "",
-                  "openshift.io/display-name": "labs",
+                  "openshift.io/display-name": "labs"
               }
           },
           "spec": {
